@@ -1,0 +1,5 @@
+const CACHE='tls-shell-v1';
+const CORE=['./','./index.html','./style.css','./script.js','./i18n.js','./chapter2.js','./chapter3.js','./chapter4.js','./chapter5.js','./chapter6.js','./chapter7.js','./chapter8.js','./chapter9.js','./chapter10.js','./chapter11.js','./chapter12.js','./deluxe.js','./manifest.webmanifest'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE).catch(()=>{})));self.skipWaiting()});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim()});
+self.addEventListener('fetch',event=>{const req=event.request;if(req.method!=='GET'||new URL(req.url).origin!==location.origin)return;event.respondWith(caches.match(req).then(cached=>cached||fetch(req).then(res=>{if(res.ok){const copy=res.clone();caches.open(CACHE).then(c=>c.put(req,copy))}return res}).catch(()=>caches.match('./index.html'))))});
