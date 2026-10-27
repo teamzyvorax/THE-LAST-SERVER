@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050509">
+  <meta name="description" content="THE LAST SERVER — an interactive mystery experience from Zyvora.">
+  <title>THE LAST SERVER // ACCESS NODE</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="boot" class="boot">
+    <div class="boot-inner">
+      <div class="boot-logo">TLS<span>//</span>01</div>
+      <div id="bootText" class="boot-text"></div>
+      <div class="boot-bar"><i></i></div>
+    </div>
+  </div>
+
+  <canvas id="stars"></canvas>
+  <div class="noise"></div>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="The Last Server home"><span class="dot"></span>THE LAST SERVER</a>
+    <div class="status"><span class="pulse"></span><span id="statusText">OFFLINE NODE</span></div>
+  </header>
+
+  <main id="home">
+    <section class="hero section">
+      <div class="eyebrow">ZYVORA NETWORK // NODE 00</div>
+      <h1>THE <span>LAST</span><br>SERVER</h1>
+      <p class="lead">Something is still running.</p>
+      <p class="sub">The network was shut down 4,217 days ago. One node never received the command.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="connectBtn">CONNECT TO NODE</button>
+        <button class="btn ghost" id="terminalBtn">OPEN TERMINAL</button>
+      </div>
+      <div class="scroll-hint">SCROLL TO INVESTIGATE <span>↓</span></div>
+    </section>
+
+    <section class="section dossier" id="dossier">
+      <div class="section-label">01 // INCIDENT REPORT</div>
+      <div class="grid-two">
+        <div>
+          <h2>SERVER STATUS: <em>UNKNOWN</em></h2>
+          <p>At 03:17 UTC, every Zyvora node disappeared from the network. All except NODE-00. The final heartbeat contains a message addressed to a user who does not exist.</p>
+          <div class="warning">⚠ ARCHIVE INTEGRITY: 37% &nbsp; // &nbsp; DO NOT TRUST RECOVERED DATA</div>
+        </div>
+        <div class="telemetry">
+          <div><span>UPTIME</span><b id="uptime">00:00:00</b></div>
+          <div><span>CORE LOAD</span><b id="load">71.4%</b></div>
+          <div><span>ACTIVE USERS</span><b id="users">01</b></div>
+          <div><span>LAST PING</span><b>UNKNOWN</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section terminal-section" id="terminal">
+      <div class="section-label">02 // RECOVERY TERMINAL</div>
+      <div class="terminal-window">
+        <div class="terminal-head"><span>NODE-00 / RECOVERY SHELL</span><span>SECURE</span></div>
+        <div id="terminalOutput" class="terminal-output">
+          <div>&gt; connection established</div>
+          <div>&gt; encrypted archive mounted</div>
+          <div>&gt; type <b>help</b> to list commands</div>
+        </div>
+        <form id="terminalForm" class="terminal-form">
+          <span>&gt;</span><input id="terminalInput" autocomplete="off" spellcheck="false" aria-label="Terminal command">
+        </form>
+      </div>
+      <p class="terminal-tip">Try: <code>help</code>, <code>status</code>, <code>who</code>, <code>logs</code>, <code>unlock</code></p>
+    </section>
+
+    <section class="section archive" id="archive">
+      <div class="section-label">03 // RECOVERED ARCHIVE</div>
+      <div class="cards">
+        <article class="card locked"><span>FILE_001</span><h3>FINAL_HEARTBEAT.LOG</h3><p>Last transmission before the network vanished.</p><button data-file="heartbeat">DECRYPT</button></article>
+        <article class="card locked"><span>FILE_002</span><h3>USER_0001.DAT</h3><p>Identity record is damaged beyond normal recovery.</p><button data-file="user">DECRYPT</button></article>
+        <article class="card locked"><span>FILE_003</span><h3>NODE_ZERO.MAP</h3><p>A map of a location that should not exist.</p><button data-file="map">DECRYPT</button></article>
+      </div>
+    </section>
+
+    <section class="section finale" id="finale">
+      <div class="section-label">04 // THE MESSAGE</div>
+      <div class="message-box">
+        <div class="glitch-word">DON'T</div>
+        <h2>WAKE THE SERVER.</h2>
+        <p>Someone already did.</p>
+        <button class="btn primary" id="finalBtn">REQUEST FINAL ACCESS</button>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>THE LAST SERVER</span><span>© ZYVORA // NODE-00</span><span>BUILD 1.0.0</span></footer>
+  <div id="modal" class="modal" aria-hidden="true"><div class="modal-box"><button class="close" id="closeModal">×</button><div id="modalContent"></div></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
